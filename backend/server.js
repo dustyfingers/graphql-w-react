@@ -1,10 +1,13 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 
+const schema = require('./schema/schema');
+
 const app = express();
 
 const graphQLOptions = {
-    graphiql: true
+    graphiql: true,
+    schema
 }
 
 app.use('/graphql', graphqlHTTP(graphQLOptions));
