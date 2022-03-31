@@ -5,11 +5,6 @@ const schema = require('./schema/schema');
 
 const app = express();
 
-const graphQLOptions = {
-    graphiql: true,
-    schema
-}
-
-app.use('/graphql', graphqlHTTP(graphQLOptions));
+app.use('/graphql', graphqlHTTP({ graphiql: true, schema }));
 
 app.listen(4000, () => console.log('listening...'));
