@@ -15,7 +15,7 @@ this request get sent to?
 | /posts/15 |  PUT   |  update post 15   |
 | /posts/18 | DELETE |  delete post 18   |
 
-#### more generally:
+#### More generally:
 | URL                  | Method |           Operation           |
 | :------------------- | :----: | :---------------------------: |
 | /<resource_name>     |  POST  |      create a new record      |
@@ -44,5 +44,11 @@ this request get sent to?
 | /users/23/posts/15 |  PUT   | update post 15 created by user 23  |
 | /users/23/posts/18 | DELETE | delete post 18 created by user 23  |
 
-### With only two resources, this is okay. but what if we had several resources? We would have to nest our data and things get...very weird. 
+### With only two resources, this is okay. But what if we had several resources that are closely related? We would have to nest our routing and things get...very weird. 
+
+### Restful apis are prone to a few problems, specifically when the data being queried is closely related:
+1. making too many http requests (eg a request to /users/1/company & users/1/position for each friend of a user - data is underfetched)
+2. fetching too much data at once (eg a request to /users/23/friends_with_companies_and_positions where only the friends company is used and not their position - data is overfetched)
+3. lots of tightly coupled, super specific endpoints (eg /users/23/friends_with_companies_and_positions - too specific to be generally useful)
+
 ### GraphQL offers a solution to this problem.
