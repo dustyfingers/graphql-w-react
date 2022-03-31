@@ -1,13 +1,60 @@
 {
-    "users": [
-        { "id": "123", "age": 25, "firstName": "Lou", "companyId": "1" },
-        { "id": "234", "age": 62, "firstName": "Anne", "companyId": "1" },
-        { "id": "345", "age": 47, "firstName": "Abdul", "companyId": "2" },
-        { "id": "456", "age": 22, "firstName": "Hannah", "companyId": "3" }
-    ],
-    "companies": [
-        { "id": "1", "name": "Zaronology", "description": "builds streaming services" },
-        { "id": "2", "name": "Apple", "description": "builds computers and mobile phones" },
-        { "id": "3", "name": "Amazon", "description": "sells stuff online" }
-    ]
+  "users": [
+    {
+      "id": "123",
+      "age": 25,
+      "firstName": "Lou",
+      "companyId": "1"
+    },
+    {
+      "id": "234",
+      "age": 62,
+      "firstName": "Anne",
+      "companyId": "1"
+    },
+    {
+      "id": "345",
+      "age": 47,
+      "firstName": "Abdul",
+      "companyId": "2"
+    },
+    {
+      "id": "456",
+      "age": 22,
+      "firstName": "Hannah",
+      "companyId": "3"
+    },
+    {
+      "firstName": "Stephen",
+      "age": 26,
+      "id": "Px-F3pN"
+    },
+    {
+      "firstName": "Stephen",
+      "age": 26,
+      "id": "8dfosBD"
+    },
+    {
+      "firstName": "Brianna",
+      "age": 32,
+      "id": "wMCrpV-"
+    }
+  ],
+  "companies": [
+    {
+      "id": "1",
+      "name": "Zaronology",
+      "description": "builds streaming services"
+    },
+    {
+      "id": "2",
+      "name": "Apple",
+      "description": "builds computers and mobile phones"
+    },
+    {
+      "id": "3",
+      "name": "Amazon",
+      "description": "sells stuff online"
+    }
+  ]
 }

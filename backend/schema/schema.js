@@ -3,7 +3,8 @@ const {
     GraphQLString,
     GraphQLInt,
     GraphQLSchema,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } = require('graphql');
 const axios = require('axios');
 
@@ -69,5 +70,27 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
+const mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addUser: {
+            // the type variable in a mutation refers to the type that we are eventually retuning from the resolve() function
+            type: UserType,
+            args: {
+                // GraphQLNonNull() makes this field required
+                companyId: { type:GraphQLString },
+                firstName: { type: new GraphQLNonNull(GraphQLString) },
+                age: { type:  new GraphQLNonNull(GraphQLInt) }
+            },
+            resolve(parentVal, args) {
+                return axios.post(`http://localhost:3000/users`, { ...args }).then(res => res.data);
+            }
+        },
+        deleteUser: {
+            
+        }
+    }
+})
+
 // schema contains all of the knowledge that tells graphQL how our app's data looks
-module.exports = new GraphQLSchema({ query: RootQuery });
+module.exports = new GraphQLSchema({ query: RootQuery, mutation });
