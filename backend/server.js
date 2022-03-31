@@ -3,8 +3,10 @@ const { graphqlHTTP } = require('express-graphql');
 
 const app = express();
 
-app.use('/graphql', graphqlHTTP({graphiql: true}));
+const graphQLOptions = {
+    graphiql: true
+}
 
-app.listen(4000, () => {
-    console.log('listening...');
-});
+app.use('/graphql', graphqlHTTP(graphQLOptions));
+
+app.listen(4000, () => console.log('listening...'));
