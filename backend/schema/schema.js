@@ -6,6 +6,15 @@ const {
 } = require('graphql');
 const axios = require('axios');
 
+const CompanyType = new GraphQLObjectType({
+    name: 'Company',
+    fields: {
+        id: { type: GraphQLString },
+        name: { type: GraphQLString },
+        description: { type: GraphQLString }
+    }
+});
+
 const UserType = new GraphQLObjectType({
     // name of an individual record - REQUIRED
     name: 'User',
@@ -13,7 +22,14 @@ const UserType = new GraphQLObjectType({
     fields: {
         id: { type: GraphQLString },
         age: { type: GraphQLInt },
-        firstName: { type: GraphQLString }
+        firstName: { type: GraphQLString },
+        company: {
+            type: CompanyType,
+            resolve(parentVal, args) {
+                // parentVal is the User that has been retrieved in this case
+                return axios.get(`http://localhost:3000/companies/${parentVal.companyId}`).then(res => res.data);
+            }
+        }
     }
 });
 
