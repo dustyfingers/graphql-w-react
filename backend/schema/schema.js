@@ -7,13 +7,6 @@ const {
 } = require('graphql');
 const _ = require('lodash');
 
-//TODO: use a db eventually
-const users = [
-    { id: '123', age: 25, firstName: 'Lou' },
-    { id: 'e42', age: 62, firstName: 'Anne' },
-    { id: '12f', age: 35, firstName: 'Joe' }
-]
-
 const UserType = new GraphQLObjectType({
     // name of an individual record - REQUIRED
     name: 'User',
@@ -33,14 +26,14 @@ const RootQuery = new GraphQLObjectType({
         user: {
             type: UserType,
             args: { id: { type: GraphQLString } },
-            // the resolve function actually goes and fetches the data
-            // and resolves to a value
+            // the resolve function fetches the data and resolves to a value
             resolve(parentVal, args) {
-                // less efficient way
+                // less efficient way - scans every item in the array
                 // return users.filter(user => user.id === args.id);
 
                 // more efficient way - stops when it finds the user instead of going through entire array
-                return _.find(users, { id: args.id })
+                // also .find returns an object instead of an array
+                return _.find(users, { id: args.id });
             }
         }
     }
